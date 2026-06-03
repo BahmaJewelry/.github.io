@@ -274,35 +274,70 @@ textarea{resize:vertical;min-height:55px}
 .ya-bar::-webkit-scrollbar,.yp-bar::-webkit-scrollbar{width:2px}
 .ya-bar::-webkit-scrollbar-thumb,.yp-bar::-webkit-scrollbar-thumb{background:rgba(255,255,255,.06)}
 
-/* ═══════════════════════════════════════
-   MOBILE RESPONSIVE — max 768px
-═══════════════════════════════════════ */
+/* ══════════════════════════════════════════════
+   MOBILE — iPhone 15 optimized
+   Safe area: top=59px, bottom=34px
+   Nav bar height: 56px
+   Total bottom clearance: 90px
+══════════════════════════════════════════════ */
 @media (max-width: 768px) {
+
+  /* TOPBAR — clear iPhone status bar */
+  #topbar {
+    padding-top: max(12px, env(safe-area-inset-top, 0px)) !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    padding-bottom: 8px !important;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  #logo-wrap { flex: 1; min-width: 0; }
+  .pills {
+    width: 100%;
+    overflow-x: auto;
+    gap: 4px;
+    padding-bottom: 2px;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+  .pill { padding: 2px 8px; flex-shrink: 0; }
+  .plbl { font-size: 6px; }
+  .pval { font-size: 10px; }
+  #sync-indicator { display: none; }
+  #curmon { font-size: 8px; }
 
   /* SIDEBAR → bottom nav bar */
   #sidebar {
-    position: fixed;
-    bottom: 0; left: 0; right: 0;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
     width: 100% !important;
-    height: 52px !important;
+    height: auto !important;
+    min-height: 56px !important;
     flex-direction: row !important;
-    align-items: center;
-    justify-content: space-around;
-    z-index: 100;
+    align-items: center !important;
+    justify-content: space-around !important;
+    z-index: 100 !important;
     border-right: none !important;
-    border-top: 1px solid rgba(255,255,255,.07);
-    padding: 0 4px;
-    overflow-x: auto;
-    overflow-y: hidden;
+    border-top: 1px solid rgba(255,255,255,.08) !important;
+    padding: 8px 4px !important;
+    padding-bottom: calc(8px + env(safe-area-inset-bottom, 0px)) !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch;
+    background: rgba(12,20,28,.97) !important;
+    backdrop-filter: blur(20px) !important;
   }
   .nv {
     writing-mode: horizontal-tb !important;
     transform: none !important;
-    padding: 6px 10px !important;
-    font-size: 7.5px !important;
-    letter-spacing: .1em !important;
-    white-space: nowrap;
-    flex-shrink: 0;
+    padding: 4px 8px !important;
+    font-size: 7px !important;
+    letter-spacing: .08em !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    min-width: 0 !important;
   }
   .nv.on::before {
     bottom: auto !important;
@@ -313,116 +348,104 @@ textarea{resize:vertical;min-height:55px}
     transform: translateX(-50%) !important;
   }
 
-  /* MAIN: no left offset from sidebar */
+  /* MAIN layout */
   #app { flex-direction: column !important; }
-  #main { width: 100% !important; }
+  #main { width: 100% !important; overflow: hidden; display: flex; flex-direction: column; }
 
-  /* TOPBAR: stack pills below logo */
-  #topbar {
-    flex-wrap: wrap;
-    gap: 5px;
-    padding: 6px 10px !important;
+  /* CONTENT — clear bottom nav + safe area */
+  #content {
+    padding: 12px 12px 0 !important;
+    flex: 1 !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    /* Bottom padding = nav height + safe area + extra breathing room */
+    padding-bottom: calc(56px + env(safe-area-inset-bottom, 0px) + 20px) !important;
   }
-  #logo-wrap { flex: 1; min-width: 0; }
-  .pills {
-    width: 100%;
-    overflow-x: auto;
-    gap: 4px;
-    padding-bottom: 2px;
-    flex-wrap: nowrap;
-  }
-  .pill { padding: 2px 8px; flex-shrink: 0; }
-  .plbl { font-size: 6px; }
-  .pval { font-size: 10px; }
-  #sync-indicator { display: none; }
 
-  /* CONTENT: add bottom padding for nav bar */
-  #content { padding: 10px 10px 70px !important; }
-
-  /* DASHBOARD: stack cards */
+  /* DASHBOARD: stack cards vertically */
   .dash-top {
     grid-template-columns: 1fr !important;
     gap: 8px !important;
   }
 
-  /* BTABS: above bottom nav */
+  /* BTABS (month tabs in reportes) — above nav bar */
   #btabs {
     left: 0 !important;
-    bottom: 52px !important;
+    right: 0 !important;
+    bottom: calc(56px + env(safe-area-inset-bottom, 0px)) !important;
     padding: 6px 10px !important;
     gap: 4px !important;
+    flex-wrap: wrap !important;
+    background: rgba(12,20,28,.97) !important;
+    backdrop-filter: blur(20px) !important;
+    border-top: 1px solid rgba(255,255,255,.06) !important;
+    z-index: 90 !important;
   }
-  .mtb { padding: 3px 9px; font-size: 8px; }
+  /* When btabs is visible, add extra padding to content */
+  #btabs.vis ~ * #content,
+  .sc-reportes-active #content {
+    padding-bottom: calc(120px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+  .mtb { padding: 3px 9px; font-size: 7.5px; }
 
-  /* FAB: above bottom nav */
-  #fab { bottom: 64px !important; right: 12px !important; }
+  /* FAB — above nav bar, not overlapping tabs */
+  #fab {
+    bottom: calc(56px + env(safe-area-inset-bottom, 0px) + 12px) !important;
+    right: 14px !important;
+    z-index: 95 !important;
+  }
 
-  /* MODALS: full screen on mobile */
+  /* MODALS — sheet from bottom */
+  .ov {
+    align-items: flex-end !important;
+    padding: 0 !important;
+  }
   .modal {
     width: 100% !important;
     max-width: 100% !important;
-    max-height: 92vh !important;
-    border-radius: 14px 14px 0 0 !important;
-    margin: 0 !important;
-    padding: 16px 14px 24px !important;
+    max-height: 88vh !important;
+    border-radius: 18px 18px 0 0 !important;
+    padding: 20px 16px !important;
+    padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px)) !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
   }
-  .ov { align-items: flex-end !important; padding: 0 !important; }
 
-  /* GRIDS: 2 cols max on mobile */
+  /* GRIDS in modals */
   .g4 { grid-template-columns: 1fr 1fr !important; }
   .g3 { grid-template-columns: 1fr 1fr !important; }
 
-  /* COTIZACIONES TABLE: hide acciones column, show as tap */
-  .tbl { font-size: 10px; }
-  .tbl th, .tbl td { padding: 5px 4px; }
-
-  /* REPORTES stats boxes: 2 cols */
-  .srow.s6 { grid-template-columns: 1fr 1fr !important; }
-
-  /* REPORTES table: scrollable */
-  .card { overflow-x: auto; }
-
-  /* STOCK filters: wrap nicely */
-  .filters { gap: 4px; }
+  /* STOCK filters */
+  .filters { gap: 4px; flex-wrap: wrap; }
   .fpill { font-size: 8px; padding: 3px 9px; }
 
-  /* SC-CRM full height */
-  #sc-crm { overflow: hidden; }
-
-  /* CRM modals: metal buttons wrap */
+  /* Metal/category buttons */
   .mg, .cg { flex-wrap: wrap; }
   .cb { min-width: 60px; flex: 1 1 60px; font-size: 8px; }
 
   /* Pago rows */
   .pago-row { flex-wrap: wrap; }
+
+  /* Cards */
+  .card { border-radius: 10px; }
+
+  /* sc-crm full height */
+  #sc-crm { overflow: hidden; height: 100vh; }
 }
 
-/* Extra small phones */
-@media (max-width: 390px) {
-  .nv { font-size: 6.5px !important; padding: 6px 7px !important; }
+/* Reportes with btabs visible — more bottom padding */
+@media (max-width: 768px) {
+  #content.has-btabs {
+    padding-bottom: calc(130px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+}
+
+/* Extra small */
+@media (max-width: 375px) {
+  .nv { font-size: 6px !important; padding: 4px 6px !important; }
   .g3 { grid-template-columns: 1fr !important; }
 }
-
-/* ═══ iPhone Safe Area ═══ */
-@supports (padding-bottom: env(safe-area-inset-bottom)) {
-  #sidebar {
-    padding-bottom: calc(env(safe-area-inset-bottom) + 4px) !important;
-  }
-  #btabs {
-    padding-bottom: calc(env(safe-area-inset-bottom) + 6px) !important;
-  }
-  #fab {
-    bottom: calc(env(safe-area-inset-bottom) + 64px) !important;
-  }
-  #content {
-    padding-bottom: calc(env(safe-area-inset-bottom) + 70px) !important;
-  }
-  /* Admin home & login safe area */
-  #sc-admin-home, #sc-login {
-    padding-bottom: env(safe-area-inset-bottom) !important;
-  }
-}
-/* viewport-fit=cover needed for safe area to work */
 </style>
 </head>
 <body>
@@ -936,7 +959,7 @@ window.onload=function(){
 };
 
 function fetchFX(){fetch('https://api.exchangerate-api.com/v4/latest/USD').then(function(r){return r.json();}).then(function(d){FX=(d.rates&&d.rates.MXN)?d.rates.MXN:17.5;document.getElementById('pF').textContent=FX.toFixed(2);var oz=31.1035;goldMXN=(4720/oz)*FX;platMXN=(1050/oz)*FX;document.getElementById('pG').textContent='$'+Math.round(goldMXN)+'/gr';document.getElementById('pP').textContent='$'+Math.round(platMXN)+'/gr';}).catch(function(){});}
-function goSc(id,btn){document.querySelectorAll('.sc').forEach(function(s){s.classList.remove('on');});document.querySelectorAll('.nv').forEach(function(b){b.classList.remove('on');});document.getElementById('sc-'+id).classList.add('on');if(btn)btn.classList.add('on');document.getElementById('btabs').classList.remove('vis');if(id==='dashboard')renderDash();if(id==='cotizaciones')renderCots();if(id==='reportes'){document.getElementById('btabs').classList.add('vis');buildTabs();renderMes(MESREP);}if(id==='stock')renderStock();if(id==='historico')buildHist();if(id==='configuracion')cargarConfigUI();}
+function goSc(id,btn){document.querySelectorAll('.sc').forEach(function(s){s.classList.remove('on');});document.querySelectorAll('.nv').forEach(function(b){b.classList.remove('on');});document.getElementById('sc-'+id).classList.add('on');if(btn)btn.classList.add('on');document.getElementById('btabs').classList.remove('vis');var cnt=document.getElementById('content');if(cnt){cnt.classList.remove('has-btabs');}if(id==='dashboard')renderDash();if(id==='cotizaciones')renderCots();if(id==='reportes'){document.getElementById('btabs').classList.add('vis');buildTabs();renderMes(MESREP);var cnt=document.getElementById('content');if(cnt)cnt.classList.add('has-btabs');}if(id==='stock')renderStock();if(id==='historico')buildHist();if(id==='configuracion')cargarConfigUI();}
 function genFolio(cat){var yr=new Date().getFullYear();var n=DB.filter(function(c){return c.folio&&String(c.folio).indexOf(String(yr))===0;}).length;var s=String(n+1);while(s.length<3)s='0'+s;return yr+s+(cat||'D');}
 function selCat(btn){CAT=btn.getAttribute('data-c');document.querySelectorAll('#cotCatGrp .cb').forEach(function(b){b.classList.remove('on');});btn.classList.add('on');}
 function selMetal(btn){var prev=MET;MET=btn.getAttribute('data-m');document.querySelectorAll('#cotMetGrp .cb').forEach(function(b){b.classList.remove('on');});btn.classList.add('on');if(prev!==MET)document.getElementById('fsp').value=(MET==='PT950'?platMXN:goldMXN).toFixed(2);recalcM();}
