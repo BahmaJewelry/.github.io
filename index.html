@@ -274,60 +274,56 @@ textarea{resize:vertical;min-height:55px}
 .ya-bar::-webkit-scrollbar,.yp-bar::-webkit-scrollbar{width:2px}
 .ya-bar::-webkit-scrollbar-thumb,.yp-bar::-webkit-scrollbar-thumb{background:rgba(255,255,255,.06)}
 
-/* ══════════════════════════════════════════════
-   MOBILE — iPhone 15 optimized
-   Safe area: top=59px, bottom=34px
-   Nav bar height: 56px
-   Total bottom clearance: 90px
-══════════════════════════════════════════════ */
+/* ══════════════════════════════════════════
+   MOBILE — iPhone 15 (393×852, safe areas)
+   status bar: ~54px  home bar: ~34px
+══════════════════════════════════════════ */
 @media (max-width: 768px) {
 
-  /* TOPBAR — clear iPhone status bar */
+  /* ── Global: every full-screen module needs
+        top padding to clear the status bar ── */
+  #sc-crm, #sc-yes, #sc-prov, #sc-admin-home, #sc-login {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+
+  /* ── TOPBAR (CRM) ── */
   #topbar {
-    padding-top: max(12px, env(safe-area-inset-top, 0px)) !important;
-    padding-left: 12px !important;
-    padding-right: 12px !important;
-    padding-bottom: 8px !important;
+    padding: 10px 12px 8px !important;
     flex-wrap: wrap;
     gap: 5px;
   }
-  #logo-wrap { flex: 1; min-width: 0; }
+  #logo-wrap { flex: 1; min-width: 0; align-items: center; }
+  #curmon { font-size: 8px; }
+  #sync-indicator { display: none; }
   .pills {
     width: 100%;
     overflow-x: auto;
     gap: 4px;
-    padding-bottom: 2px;
     flex-wrap: nowrap;
+    padding-bottom: 2px;
     -webkit-overflow-scrolling: touch;
   }
   .pill { padding: 2px 8px; flex-shrink: 0; }
   .plbl { font-size: 6px; }
   .pval { font-size: 10px; }
-  #sync-indicator { display: none; }
-  #curmon { font-size: 8px; }
 
-  /* SIDEBAR → bottom nav bar */
+  /* ── SIDEBAR → fixed bottom nav ── */
   #sidebar {
     position: fixed !important;
-    bottom: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
+    bottom: 0 !important; left: 0 !important; right: 0 !important;
     width: 100% !important;
     height: auto !important;
-    min-height: 56px !important;
     flex-direction: row !important;
     align-items: center !important;
     justify-content: space-around !important;
     z-index: 100 !important;
     border-right: none !important;
     border-top: 1px solid rgba(255,255,255,.08) !important;
-    padding: 8px 4px !important;
-    padding-bottom: calc(8px + env(safe-area-inset-bottom, 0px)) !important;
+    padding: 8px 4px calc(8px + env(safe-area-inset-bottom, 0px)) !important;
     overflow-x: auto !important;
     overflow-y: hidden !important;
     -webkit-overflow-scrolling: touch;
-    background: rgba(12,20,28,.97) !important;
-    backdrop-filter: blur(20px) !important;
+    background: rgba(12,20,28,.98) !important;
   }
   .nv {
     writing-mode: horizontal-tb !important;
@@ -337,115 +333,185 @@ textarea{resize:vertical;min-height:55px}
     letter-spacing: .08em !important;
     white-space: nowrap !important;
     flex-shrink: 0 !important;
-    min-width: 0 !important;
   }
   .nv.on::before {
-    bottom: auto !important;
-    top: 0 !important;
-    left: 50% !important;
-    width: 60% !important;
-    height: 2px !important;
-    transform: translateX(-50%) !important;
+    bottom: auto !important; top: 0 !important;
+    left: 50% !important; transform: translateX(-50%) !important;
+    width: 60% !important; height: 2px !important;
   }
 
-  /* MAIN layout */
+  /* ── CRM MAIN ── */
   #app { flex-direction: column !important; }
-  #main { width: 100% !important; overflow: hidden; display: flex; flex-direction: column; }
-
-  /* CONTENT — clear bottom nav + safe area */
+  #main { width: 100% !important; display: flex; flex-direction: column; overflow: hidden; }
   #content {
-    padding: 12px 12px 0 !important;
     flex: 1 !important;
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
-    -webkit-overflow-scrolling: touch !important;
-    /* Bottom padding = nav height + safe area + extra breathing room */
-    padding-bottom: calc(56px + env(safe-area-inset-bottom, 0px) + 20px) !important;
-  }
-
-  /* DASHBOARD: stack cards vertically */
-  .dash-top {
-    grid-template-columns: 1fr !important;
-    gap: 8px !important;
-  }
-
-  /* BTABS (month tabs in reportes) — above nav bar */
-  #btabs {
-    left: 0 !important;
-    right: 0 !important;
-    bottom: calc(56px + env(safe-area-inset-bottom, 0px)) !important;
-    padding: 6px 10px !important;
-    gap: 4px !important;
-    flex-wrap: wrap !important;
-    background: rgba(12,20,28,.97) !important;
-    backdrop-filter: blur(20px) !important;
-    border-top: 1px solid rgba(255,255,255,.06) !important;
-    z-index: 90 !important;
-  }
-  /* When btabs is visible, add extra padding to content */
-  #btabs.vis ~ * #content,
-  .sc-reportes-active #content {
-    padding-bottom: calc(120px + env(safe-area-inset-bottom, 0px)) !important;
-  }
-  .mtb { padding: 3px 9px; font-size: 7.5px; }
-
-  /* FAB — above nav bar, not overlapping tabs */
-  #fab {
-    bottom: calc(56px + env(safe-area-inset-bottom, 0px) + 12px) !important;
-    right: 14px !important;
-    z-index: 95 !important;
-  }
-
-  /* MODALS — sheet from bottom */
-  .ov {
-    align-items: flex-end !important;
-    padding: 0 !important;
-  }
-  .modal {
-    width: 100% !important;
-    max-width: 100% !important;
-    max-height: 88vh !important;
-    border-radius: 18px 18px 0 0 !important;
-    padding: 20px 16px !important;
-    padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px)) !important;
+    padding: 12px !important;
+    padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px)) !important;
     overflow-y: auto !important;
     -webkit-overflow-scrolling: touch !important;
   }
-
-  /* GRIDS in modals */
-  .g4 { grid-template-columns: 1fr 1fr !important; }
-  .g3 { grid-template-columns: 1fr 1fr !important; }
-
-  /* STOCK filters */
-  .filters { gap: 4px; flex-wrap: wrap; }
-  .fpill { font-size: 8px; padding: 3px 9px; }
-
-  /* Metal/category buttons */
-  .mg, .cg { flex-wrap: wrap; }
-  .cb { min-width: 60px; flex: 1 1 60px; font-size: 8px; }
-
-  /* Pago rows */
-  .pago-row { flex-wrap: wrap; }
-
-  /* Cards */
-  .card { border-radius: 10px; }
-
-  /* sc-crm full height */
-  #sc-crm { overflow: hidden; height: 100vh; }
-}
-
-/* Reportes with btabs visible — more bottom padding */
-@media (max-width: 768px) {
   #content.has-btabs {
     padding-bottom: calc(130px + env(safe-area-inset-bottom, 0px)) !important;
   }
+  #sc-crm { overflow: hidden; height: 100%; }
+
+  /* ── DASHBOARD ── */
+  .dash-top { grid-template-columns: 1fr !important; gap: 8px !important; }
+  /* Give chart more bottom breathing room */
+  .cwrap { height: 130px !important; margin-bottom: 8px; }
+
+  /* ── BTABS (month tabs) ── */
+  #btabs {
+    left: 0 !important; right: 0 !important;
+    bottom: calc(44px + env(safe-area-inset-bottom, 0px)) !important;
+    padding: 6px 10px !important;
+    gap: 4px !important;
+    flex-wrap: wrap !important;
+    background: rgba(12,20,28,.98) !important;
+    border-top: 1px solid rgba(255,255,255,.07) !important;
+    z-index: 90 !important;
+  }
+  .mtb { padding: 3px 9px; font-size: 7.5px; }
+
+  /* ── FAB ── */
+  #fab {
+    bottom: calc(48px + env(safe-area-inset-bottom, 0px)) !important;
+    right: 14px !important;
+    z-index: 95 !important;
+    display: none !important; /* hide FAB in reportes tab */
+  }
+  /* Show FAB only outside of reportes */
+  #sc-cotizaciones ~ #fab,
+  #sc-dashboard ~ #fab { display: flex !important; }
+  /* Simpler: always show but move above btabs when they're visible */
+  #btabs.vis + * #fabx { display: none; }
+
+  /* ── MODALS: sheet from bottom ── */
+  .ov { align-items: flex-end !important; padding: 0 !important; }
+  .modal {
+    width: 100% !important; max-width: 100% !important;
+    max-height: 90vh !important;
+    border-radius: 18px 18px 0 0 !important;
+    padding: 20px 16px calc(20px + env(safe-area-inset-bottom, 0px)) !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .modal-sm { max-height: 90vh !important; }
+
+  /* ── GRIDS in modals ── */
+  .g4 { grid-template-columns: 1fr 1fr !important; }
+  .g3 { grid-template-columns: 1fr 1fr !important; }
+  .mg, .cg { flex-wrap: wrap; }
+  .cb { min-width: 60px; flex: 1 1 60px; font-size: 8px; }
+  .pago-row { flex-wrap: wrap; }
+
+  /* ── STOCK ── */
+  .filters { gap: 4px; flex-wrap: wrap; }
+  .fpill { font-size: 8px; padding: 3px 9px; }
+
+  /* ── PROVEEDORES: clear status bar ── */
+  #sc-prov > div:first-child {
+    padding-top: calc(env(safe-area-inset-top, 0px) + 14px) !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* ── YES ADMIN: mobile layout ── */
+  #sc-yes { height: 100%; }
+  #yes-wrap { flex-direction: column !important; height: 100%; }
+  #ys-admin { flex-direction: column !important; height: 100%; }
+
+  /* YES sidebar → top nav bar */
+  .ya-bar {
+    width: 100% !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    padding: calc(env(safe-area-inset-top, 0px) + 10px) 16px 10px !important;
+    border-right: none !important;
+    border-bottom: 1px solid rgba(200,208,216,.08) !important;
+    gap: 12px !important;
+    flex-shrink: 0 !important;
+    overflow-x: auto !important;
+  }
+  .ya-logo {
+    font-size: 1.3rem !important;
+    margin-bottom: 0 !important;
+    flex-shrink: 0;
+  }
+  .ya-lbl { display: none !important; } /* hide subtitle on mobile */
+  .yn {
+    padding: .4rem .75rem !important;
+    margin-bottom: 0 !important;
+    font-size: .62rem !important;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  /* back button in YES bar */
+  .ya-bar > button {
+    margin-top: 0 !important;
+    margin-left: auto !important;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .ya-main {
+    flex: 1 !important;
+    overflow-y: auto !important;
+    padding: 1.25rem 1rem !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* YES portal on mobile */
+  #ys-portal { flex-direction: column !important; }
+  .yp-bar {
+    width: 100% !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    padding: calc(env(safe-area-inset-top, 0px) + 10px) 16px 10px !important;
+    border-right: none !important;
+    border-bottom: 1px solid rgba(200,208,216,.07) !important;
+    gap: 10px !important;
+    flex-shrink: 0 !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+  .yp-logo { font-size: 1.2rem !important; margin-bottom: 0 !important; flex-shrink: 0; }
+  .yp-gr { margin-bottom: 0 !important; flex-shrink: 0; }
+  #ysteps { display: none !important; } /* sidebar steps hidden on mobile portal */
+  .yvpill { display: none !important; } /* vault pill in sidebar also hidden */
+  .yp-bar > button { margin-top: 0 !important; margin-left: auto !important; flex-shrink: 0; }
+  .yp-main {
+    flex: 1 !important;
+    overflow-y: auto !important;
+    padding: 1.25rem 1rem calc(1.25rem + env(safe-area-inset-bottom, 0px)) !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* YES vault on mobile */
+  #ys-vault {
+    padding-top: calc(env(safe-area-inset-top, 0px) + 2rem) !important;
+    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 1rem) !important;
+    overflow-y: auto !important;
+  }
+
+  /* ── ADMIN HOME: center content with safe areas ── */
+  #sc-admin-home {
+    padding-top: calc(env(safe-area-inset-top, 0px) + 1rem) !important;
+    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 1rem) !important;
+  }
+
+  /* ── LOGIN: safe areas ── */
+  #sc-login {
+    padding-top: calc(env(safe-area-inset-top, 0px) + 2rem) !important;
+    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 1rem) !important;
+    justify-content: center !important;
+  }
 }
 
-/* Extra small */
 @media (max-width: 375px) {
   .nv { font-size: 6px !important; padding: 4px 6px !important; }
   .g3 { grid-template-columns: 1fr !important; }
 }
+
 </style>
 </head>
 <body>
@@ -959,7 +1025,7 @@ window.onload=function(){
 };
 
 function fetchFX(){fetch('https://api.exchangerate-api.com/v4/latest/USD').then(function(r){return r.json();}).then(function(d){FX=(d.rates&&d.rates.MXN)?d.rates.MXN:17.5;document.getElementById('pF').textContent=FX.toFixed(2);var oz=31.1035;goldMXN=(4720/oz)*FX;platMXN=(1050/oz)*FX;document.getElementById('pG').textContent='$'+Math.round(goldMXN)+'/gr';document.getElementById('pP').textContent='$'+Math.round(platMXN)+'/gr';}).catch(function(){});}
-function goSc(id,btn){document.querySelectorAll('.sc').forEach(function(s){s.classList.remove('on');});document.querySelectorAll('.nv').forEach(function(b){b.classList.remove('on');});document.getElementById('sc-'+id).classList.add('on');if(btn)btn.classList.add('on');document.getElementById('btabs').classList.remove('vis');var cnt=document.getElementById('content');if(cnt){cnt.classList.remove('has-btabs');}if(id==='dashboard')renderDash();if(id==='cotizaciones')renderCots();if(id==='reportes'){document.getElementById('btabs').classList.add('vis');buildTabs();renderMes(MESREP);var cnt=document.getElementById('content');if(cnt)cnt.classList.add('has-btabs');}if(id==='stock')renderStock();if(id==='historico')buildHist();if(id==='configuracion')cargarConfigUI();}
+function goSc(id,btn){document.querySelectorAll('.sc').forEach(function(s){s.classList.remove('on');});document.querySelectorAll('.nv').forEach(function(b){b.classList.remove('on');});document.getElementById('sc-'+id).classList.add('on');if(btn)btn.classList.add('on');document.getElementById('btabs').classList.remove('vis');var cnt=document.getElementById('content');if(cnt){cnt.classList.remove('has-btabs');}var fab=document.getElementById('fab');if(fab)fab.style.display='';if(id==='dashboard')renderDash();if(id==='cotizaciones')renderCots();if(id==='reportes'){document.getElementById('btabs').classList.add('vis');buildTabs();renderMes(MESREP);var cnt=document.getElementById('content');if(cnt)cnt.classList.add('has-btabs');var fab=document.getElementById('fab');if(fab)fab.style.display='none';}if(id==='stock')renderStock();if(id==='historico')buildHist();if(id==='configuracion')cargarConfigUI();}
 function genFolio(cat){var yr=new Date().getFullYear();var n=DB.filter(function(c){return c.folio&&String(c.folio).indexOf(String(yr))===0;}).length;var s=String(n+1);while(s.length<3)s='0'+s;return yr+s+(cat||'D');}
 function selCat(btn){CAT=btn.getAttribute('data-c');document.querySelectorAll('#cotCatGrp .cb').forEach(function(b){b.classList.remove('on');});btn.classList.add('on');}
 function selMetal(btn){var prev=MET;MET=btn.getAttribute('data-m');document.querySelectorAll('#cotMetGrp .cb').forEach(function(b){b.classList.remove('on');});btn.classList.add('on');if(prev!==MET)document.getElementById('fsp').value=(MET==='PT950'?platMXN:goldMXN).toFixed(2);recalcM();}
