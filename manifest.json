@@ -2,7 +2,7 @@
   "name": "Bahma Jewelry",
   "short_name": "Bahma",
   "description": "Bahma Jewelry Platform",
-  "start_url": "/",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#1c2630",
   "theme_color": "#1c2630",
