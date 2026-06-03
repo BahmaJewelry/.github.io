@@ -375,16 +375,10 @@ textarea{resize:vertical;min-height:55px}
 
   /* ── FAB ── */
   #fab {
-    bottom: calc(48px + env(safe-area-inset-bottom, 0px)) !important;
+    bottom: calc(56px + env(safe-area-inset-bottom, 0px)) !important;
     right: 14px !important;
     z-index: 95 !important;
-    display: none !important; /* hide FAB in reportes tab */
   }
-  /* Show FAB only outside of reportes */
-  #sc-cotizaciones ~ #fab,
-  #sc-dashboard ~ #fab { display: flex !important; }
-  /* Simpler: always show but move above btabs when they're visible */
-  #btabs.vis + * #fabx { display: none; }
 
   /* ── MODALS: sheet from bottom ── */
   .ov { align-items: flex-end !important; padding: 0 !important; }
