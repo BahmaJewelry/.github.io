@@ -2,13 +2,13 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#1c2630">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Bahma">
-<link rel="manifest" href="/manifest.json">
-<link rel="apple-touch-icon" href="/icon.png">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon.png">
 <title>Bahma · Platform</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -402,6 +402,27 @@ textarea{resize:vertical;min-height:55px}
   .nv { font-size: 6.5px !important; padding: 6px 7px !important; }
   .g3 { grid-template-columns: 1fr !important; }
 }
+
+/* ═══ iPhone Safe Area ═══ */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  #sidebar {
+    padding-bottom: calc(env(safe-area-inset-bottom) + 4px) !important;
+  }
+  #btabs {
+    padding-bottom: calc(env(safe-area-inset-bottom) + 6px) !important;
+  }
+  #fab {
+    bottom: calc(env(safe-area-inset-bottom) + 64px) !important;
+  }
+  #content {
+    padding-bottom: calc(env(safe-area-inset-bottom) + 70px) !important;
+  }
+  /* Admin home & login safe area */
+  #sc-admin-home, #sc-login {
+    padding-bottom: env(safe-area-inset-bottom) !important;
+  }
+}
+/* viewport-fit=cover needed for safe area to work */
 </style>
 </head>
 <body>
