@@ -45,7 +45,7 @@ html,body{height:100%;overflow:hidden;font-family:"Archivo",sans-serif;color:#f3
     radial-gradient(120% 100% at 50% 40%, transparent 38%, rgba(6,6,9,.5) 100%),
     rgba(8,8,11,.46)}
 
-#platform{position:relative;z-index:1;display:flex;height:100vh;overflow:hidden;align-items:center;justify-content:center}
+#platform{position:relative;z-index:1;display:flex;height:100vh;overflow:hidden;align-items:stretch;justify-content:flex-start}
 /* Admin cards */
 .admin-card{background:rgba(26,27,30,.6);border:1px solid rgba(186,190,197,.14);border-radius:8px;padding:2.6rem 2rem;cursor:pointer;transition:all .3s cubic-bezier(.4,0,.2,1);text-align:center;min-width:210px;max-width:250px;flex:1;backdrop-filter:blur(7px)}
 .admin-card:hover{background:rgba(41,43,48,.72);border-color:rgba(211,215,221,.34);transform:translateY(-3px);box-shadow:0 16px 44px rgba(0,0,0,.45)}
@@ -934,13 +934,13 @@ select option{background:var(--char-3);color:var(--ink)}
 .yletter::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 50% 0%,rgba(255,255,255,.4),transparent 60%);pointer-events:none}
 .yletter-seal{position:absolute;top:-22px;left:50%;transform:translateX(-50%);width:54px;height:54px;border-radius:50%;background:radial-gradient(circle at 38% 32%,#3a3a3f,#1d1d20 70%);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.4rem;color:#cfcabf;box-shadow:0 8px 20px -6px rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.08)}
 .yletter-to{font-size:.5rem;letter-spacing:.28em;text-transform:uppercase;color:#9a9080;margin-bottom:1rem}
-.yletter-body{font-family:var(--serif);font-style:italic;font-size:1.12rem;line-height:1.85;color:#332f27;white-space:pre-wrap;text-wrap:pretty}
+.yletter-#sc-yes-body{font-family:var(--serif);font-style:italic;font-size:1.12rem;line-height:1.85;color:#332f27;white-space:pre-wrap;text-wrap:pretty}
 .yletter-sign{margin-top:1.5rem;font-family:var(--serif);font-size:.95rem;color:#5a5446;text-align:right}
 .yletter-meta{font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:#a89e8c;margin-top:1.5rem;text-align:center;border-top:1px solid rgba(58,53,44,.12);padding-top:1rem}
 .yletter-empty{background:var(--char-2);border:1px dashed var(--line);border-radius:6px;padding:2rem 1.5rem;text-align:center;color:var(--ink-soft);font-size:.82rem;line-height:1.7}
 /* envelope */
 .yenv{position:relative;width:100%;max-width:340px;margin:0 auto;aspect-ratio:7/4.6;cursor:pointer;perspective:1000px}
-.yenv-body{position:absolute;inset:0;background:linear-gradient(165deg,#efe9dd 0%,#e4dccd 100%);border-radius:6px;box-shadow:0 26px 60px -26px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.5);overflow:hidden}
+.yenv-#sc-yes-body{position:absolute;inset:0;background:linear-gradient(165deg,#efe9dd 0%,#e4dccd 100%);border-radius:6px;box-shadow:0 26px 60px -26px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.5);overflow:hidden}
 .yenv-body::before{content:"";position:absolute;left:0;bottom:0;width:100%;height:62%;background:linear-gradient(180deg,#e8e0d1,#ded5c4);clip-path:polygon(0 100%,0 18%,50% 80%,100% 18%,100% 100%)}
 .yenv-flap{position:absolute;top:0;left:0;width:100%;height:62%;background:linear-gradient(180deg,#ece5d7,#e2dac9);clip-path:polygon(0 0,100% 0,50% 82%);z-index:2;transition:transform .15s}
 .yenv-seal{position:absolute;top:38%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:radial-gradient(circle at 38% 32%,#3a3a3f,#1d1d20 70%);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.25rem;color:#cfcabf;box-shadow:0 6px 16px -4px rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.08);z-index:3}
@@ -983,7 +983,7 @@ select option{background:var(--char-3);color:var(--ink)}
 .yalbum-spine{position:relative;z-index:2;text-align:center}
 .yalbum-spine .b{font-family:var(--serif);font-size:1.05rem;letter-spacing:.4em;text-indent:.4em;color:var(--ink);margin-bottom:.3rem}
 .yalbum-spine .s{font-size:.46rem;letter-spacing:.34em;text-transform:uppercase;color:var(--silver)}
-.yalbum-body{padding:1.5rem 1.5rem 1.6rem}
+.yalbum-#sc-yes-body{padding:1.5rem 1.5rem 1.6rem}
 .yalbum-title{font-family:var(--serif);font-size:1.7rem;color:var(--ink);margin-bottom:.5rem;line-height:1.1}
 .yalbum-incl{list-style:none;margin:1.1rem 0 1.3rem;display:flex;flex-direction:column;gap:.55rem}
 .yalbum-incl li{font-size:.76rem;color:var(--ink-soft);line-height:1.4;padding-left:1.1rem;position:relative}
@@ -1095,7 +1095,7 @@ select option{background:var(--char-3);color:var(--ink)}
 .ystone-card:hover{border-color:var(--silver);transform:translateY(-2px)}
 .ystone-photo{width:100%;aspect-ratio:1/1;overflow:hidden;background:var(--char-3)}
 .ystone-photo img{width:100%;height:100%;object-fit:cover;display:block}
-.ystone-body{padding:.85rem .95rem 1rem}
+.ystone-#sc-yes-body{padding:.85rem .95rem 1rem}
 .ystone-ct{font-family:var(--serif);font-size:1.4rem;color:var(--ink);line-height:1}
 .ystone-sub{font-size:.62rem;letter-spacing:.05em;color:var(--ink-soft);margin-top:.35rem}
 .ystone-price{font-family:var(--serif);font-size:1.05rem;color:var(--ink);margin-top:.4rem}
@@ -1160,6 +1160,26 @@ select option{background:var(--char-3);color:var(--ink)}
 #platform.gtb-on #sc-prov,
 #platform.gtb-on #sc-archivero{padding-top:44px}
 /* In YES the yp-bar and ya-bar already handle their own layout */
+
+
+
+
+/* ── LAYOUT FIXES ── */
+html, body { font-size: 13px; }
+#platform { display:flex; height:100vh; overflow:hidden; align-items:stretch; position:relative; z-index:1; }
+#sc-login { display:flex; flex:1; flex-direction:column; align-items:center; justify-content:center; }
+#sc-admin-home { flex:1; flex-direction:column; align-items:center; justify-content:center; }
+#sc-crm { flex:1; flex-direction:column; min-width:0; }
+#sc-yes { flex:1; flex-direction:column; min-width:0; }
+#sc-prov { flex:1; flex-direction:column; min-width:0; height:100vh; }
+#sc-archivero { flex:1; flex-direction:column; min-width:0; height:100vh; }
+/* sidebar stays 48px vertical — don't override */
+@media (max-width:768px){
+  #sidebar { position:fixed!important; bottom:0!important; left:0!important; right:0!important; width:100%!important; height:52px!important; flex-direction:row!important; z-index:100!important; }
+}
+.modal { max-width:min(620px,95vw)!important; max-height:90vh; overflow-y:auto; }
+#global-topbar { height:40px; }
+#platform.gtb-on #sc-crm,#platform.gtb-on #sc-yes,#platform.gtb-on #sc-prov,#platform.gtb-on #sc-archivero { padding-top:40px; }
 
 </style>
 </head>
@@ -1276,7 +1296,6 @@ select option{background:var(--char-3);color:var(--ink)}
 <!-- PLATFORM -->
 <div id="platform">
 <div id="global-topbar">
-  <button class="gtb-back" onclick="goMod('home')">‹ &nbsp;Inicio</button>
   <div class="gtb-logo">
     <img src="https://i.ibb.co/dsf0Ydc9/Logo-1.png" alt="BJ" onerror="this.style.display='none'">
     <div class="bahma-logo"><b>Bahma</b><span>Jewelry</span></div>
@@ -1286,13 +1305,24 @@ select option{background:var(--char-3);color:var(--ink)}
 
 
   <!-- LOGIN -->
-  <div id="sc-login" style="display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;max-width:340px;text-align:center;padding:2.5rem 2rem">
-    <img src="https://i.ibb.co/dsf0Ydc9/Logo-1.png" alt="BJ" style="width:90px;height:90px;object-fit:contain;mix-blend-mode:screen;filter:brightness(1.15);margin-bottom:1.1rem">
-    <div style="font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:2.25rem">Bahma Platform</div>
-    <div style="margin-bottom:.75rem"><div class="lbl">Usuario</div><input id="li-u" type="text" placeholder="bahma" autocomplete="username" onkeydown="if(event.key==='Enter')doLogin()"></div>
-    <div style="margin-bottom:.25rem"><div class="lbl">Contraseña</div><input id="li-p" type="password" placeholder="••••••••" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()"></div>
-    <div id="li-err" style="color:#c0574a;font-size:.72rem;margin-top:.4rem;display:none"></div>
-    <button class="btn bp" style="width:100%;justify-content:center;margin-top:.75rem" onclick="doLogin()">Entrar →</button>
+  <div id="sc-login" style="display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%;text-align:center">
+    <div style="width:100%;max-width:360px;padding:2.5rem 2.5rem 2.5rem;background:rgba(20,22,26,.7);border:1px solid rgba(211,215,221,.09);border-radius:12px;backdrop-filter:blur(16px)">
+      <div style="display:flex;flex-direction:column;align-items:center;margin-bottom:2.5rem">
+        <img src="https://i.ibb.co/dsf0Ydc9/Logo-1.png" alt="BJ" style="width:72px;height:72px;object-fit:contain;mix-blend-mode:screen;filter:brightness(1.15);margin-bottom:1rem" onerror="this.style.display='none'">
+        <div style="font-family:'Bodoni Moda',serif;font-size:1.1rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:#eef0f2;margin-bottom:.3rem">Bahma</div>
+        <div style="font-size:.5rem;letter-spacing:.35em;text-transform:uppercase;color:rgba(255,255,255,.22)">Plataforma interna</div>
+      </div>
+      <div style="margin-bottom:1.25rem">
+        <div style="font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(243,244,246,.4);margin-bottom:.5rem">Usuario</div>
+        <input id="li-u" type="text" placeholder="bahma" autocomplete="username" onkeydown="if(event.key==='Enter')doLogin()" style="width:100%;padding:.7rem 1rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:7px;color:#eef0f2;font-size:.9rem;font-family:'Archivo',sans-serif;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='rgba(227,229,233,.35)'" onblur="this.style.borderColor='rgba(255,255,255,.1)'">
+      </div>
+      <div style="margin-bottom:1.5rem">
+        <div style="font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(243,244,246,.4);margin-bottom:.5rem">Contraseña</div>
+        <input id="li-p" type="password" placeholder="••••••••" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()" style="width:100%;padding:.7rem 1rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:7px;color:#eef0f2;font-size:.9rem;font-family:'Archivo',sans-serif;box-sizing:border-box;transition:border-color .2s" onfocus="this.style.borderColor='rgba(227,229,233,.35)'" onblur="this.style.borderColor='rgba(255,255,255,.1)'">
+      </div>
+      <div id="li-err" style="color:#c58c8c;font-size:.72rem;margin-bottom:.75rem;display:none;text-align:center"></div>
+      <button onclick="doLogin()" style="width:100%;padding:.75rem;background:#eef0f2;border:none;border-radius:7px;color:#0e0e10;font-family:'Archivo',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;transition:background .2s;box-sizing:border-box" onmouseover="this.style.background='#fff'" onmouseout="this.style.background='#eef0f2'">Entrar →</button>
+    </div>
   </div>
 
   <!-- ADMIN HOME -->
@@ -1328,7 +1358,7 @@ select option{background:var(--char-3);color:var(--ink)}
   <div id="sc-crm" style="display:none;width:100%;height:100%;flex-direction:column">
     <div style="display:flex;height:100%;overflow:hidden">
       <nav id="sidebar" style="overflow-y:auto;overflow-x:hidden;padding-bottom:16px">
-        <button class="nv" onclick="goMod('home')" style="color:rgba(255,255,255,.25)">← Inicio</button>
+        <button class="nv" onclick="goMod('home')" style="color:rgba(243,244,246,.6);border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:6px;padding-bottom:10px;font-size:10px;writing-mode:horizontal-tb;transform:none;padding:8px 10px">← Inicio</button>
         <button class="nv on" onclick="goSc('dashboard',this)">Dashboard</button>
         <button class="nv" onclick="goSc('cotizaciones',this)">Cotizaciones</button>
         <button class="nv" onclick="goSc('reportes',this)">Reportes mensuales</button>
@@ -1533,7 +1563,7 @@ select option{background:var(--char-3);color:var(--ink)}
           <div class="ya-lbl">YES Experience</div>
           <div class="yn on" id="yn-clients" onclick="yaNav('clients')">◈ &ensp;Clientes</div>
           <div class="yn" id="yn-config" onclick="yaNav('config')">⚙ &ensp;Configuración</div>
-          <button style="margin-top:auto;background:none;border:none;color:rgba(255,255,255,.25);font-size:.63rem;cursor:pointer;font-family:'Montserrat',sans-serif;text-align:left;padding:0" onclick="goMod('home')">← Inicio</button>
+          <button class="btn bg bsm" onclick="goMod('home')" style="margin-top:auto;width:100%;text-align:center;font-size:10px">← Inicio</button>
         </div>
         <div class="ya-main" id="ya-main"></div>
       </div>
@@ -1552,7 +1582,7 @@ select option{background:var(--char-3);color:var(--ink)}
 <!-- PORTAL -->
 <div id="ys-portal" style="display:flex;width:100%;height:100vh;position:relative;z-index:1">
   <div class="yp-top">
-    <img class="yp-mark" src="img/bahma-logo.png" alt="Bahma">
+    <img class="yp-mark" src="https://i.ibb.co/dsf0Ydc9/Logo-1.png" alt="Bahma">
     <div class="yp-gr" id="ypg-name"></div>
     <div class="yp-chips">
       <div class="yvpill" id="yvpill" style="display:none">
@@ -1578,7 +1608,7 @@ select option{background:var(--char-3);color:var(--ink)}
   </div>
 
   <!-- PROVEEDORES MODULE -->
-  <div id="sc-prov" style="display:none;width:100%;height:100%;flex-direction:column;overflow:hidden">
+  <div id="sc-prov" style="display:none">
     <div style="display:flex;align-items:center;gap:1rem;padding:1.25rem 2rem;border-bottom:.5px solid rgba(255,255,255,.06);background:rgba(12,20,28,.5);flex-shrink:0">
       <button class="btn bg bsm" onclick="goMod('home')">← Inicio</button>
       <div style="font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:300;flex:1">Proveedores</div>
@@ -1616,7 +1646,7 @@ select option{background:var(--char-3);color:var(--ink)}
 
   <!-- ARCHIVERO MODULE -->
   <!-- ARCHIVERO MODULE -->
-  <div id="sc-archivero" style="display:none;width:100%;height:100%;flex-direction:column;overflow:hidden">
+  <div id="sc-archivero" style="display:none">
     <div style="display:flex;align-items:center;gap:1rem;padding:1.25rem 2rem;border-bottom:.5px solid rgba(255,255,255,.06);background:rgba(12,20,28,.5);flex-shrink:0">
       <button class="btn bg bsm" onclick="goMod('home')">← Inicio</button>
       <div style="font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:300;flex:1">Archivero de contratos</div>
@@ -1761,7 +1791,7 @@ function updateModNav(){
 
 function goMod(m){
   allHide();
-  if(m==='home'){document.getElementById('sc-admin-home').style.display='flex';return;}
+  if(m==='home'){var ah=document.getElementById('sc-admin-home');ah.style.display='flex';ah.style.flexDirection='column';return;}
   if(m==='crm'){document.getElementById('sc-crm').style.display='flex';renderDash();return;}
   if(m==='yes'){
     document.getElementById('sc-yes').style.display='flex';
@@ -1770,13 +1800,12 @@ function goMod(m){
     document.getElementById('ys-portal').style.display='none';
     yaNav('clients');return;
   }
-  if(m==='archivero'){
-    document.getElementById('sc-archivero').style.display='flex';
+  if(m==='archivero'){var ea=document.getElementById('sc-archivero');ea.style.display='flex';ea.style.flexDirection='column';
     renderArchivero();
     setTimeout(renderArchivero, 800);
     setTimeout(renderArchivero, 2000);
     return;
-  }else if(m==='prov'){document.getElementById('sc-prov').style.display='flex';renderProvHist();return;}
+  }else if(m==='prov'){var ep=document.getElementById('sc-prov');ep.style.display='flex';ep.style.flexDirection='column';renderProvHist();return;}
 }
 function allHide(){
   var ids=['sc-login','sc-admin-home','sc-crm','sc-yes','sc-prov','sc-archivero'];
@@ -2427,7 +2456,7 @@ function renderProvHist(){
 // YES DATA
 // ═══════════════════════════════════════════
 var YES_CL=[];
-var YES_CFG={adminPass:'bahma2024',proposalWA:'',payUrl:'https://buy.stripe.com/',video3d:'https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',sealLogo:'img/bahma-logo.png'};
+var YES_CFG={adminPass:'bahma2024',proposalWA:'',payUrl:'https://buy.stripe.com/',video3d:'https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',sealLogo:'https://i.ibb.co/dsf0Ydc9/Logo-1.png'};
 function ySeal(extra){return YES_CFG.sealLogo?'<div class="yenv-seal'+(extra||'')+'" style="background:#1d1d20"><img src="'+YES_CFG.sealLogo+'" alt="Bahma" style="width:62%;height:62%;object-fit:contain;filter:brightness(0) invert(1) opacity(.85)"></div>':'';}
 var YES_QUIZ={};
 var YES_STD={stone:2,teaser:4,design:6,proposal:8,metal:14,setting:28,reveal:35,story:38};
@@ -2744,13 +2773,7 @@ function yaRenderConfig(){document.getElementById('ya-main').innerHTML='<h1 clas
 function yaChangePass(){var p1=document.getElementById('ycfg-p1').value,p2=document.getElementById('ycfg-p2').value;if(!p1||p1!==p2){yToast('Las contraseñas no coinciden','er');return;}YES_CFG.adminPass=p1;_adminPass=p1;ss('yes_cfg',YES_CFG);yToast('Contraseña actualizada — próximo login usará la nueva','ok');}
 </script>
 <script>
-if('serviceWorker' in navigator){
-  window.addEventListener('load', function(){
-    navigator.serviceWorker.register('/sw.js')
-      .then(function(reg){ console.log('SW registered'); })
-      .catch(function(err){ console.log('SW error:', err); });
-  });
-}
+// SW removed - no sw.js file in repo
 
 // ══ CONTRATO DE COMPRAVENTA ══
 var CONTRATO_TPL = `<!DOCTYPE html>
